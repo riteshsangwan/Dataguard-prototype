@@ -1,0 +1,190 @@
+<div class="page page-dashboard main-custom" data-ng-controller="DashboardCtrl">
+    <div class="ui-tab-custom">
+        <ol class="breadcrumb">
+            <li><a href="#/fleet/enterprise-group">Enterprise Group A</a></li>
+            <li><a href="#/fleet/location">Location B</a></li>
+            <li class="active">Terminal C</li>
+        </ol>
+        <h1>Terminal C</h1>
+        <tabset class="ui-tab">
+            <tab heading="Terminal C Summary">
+                <div class="row">
+                    <!-- Total Count Widget -->
+                    <div class="col-md-12">
+                        <ul class="nav nav-boxed nav-justified">
+                            <li><a href="javascript:;"><i class="color-gray fa">Peripheral Count</i> 114</a></li>
+                            <li><a href="javascript:;"><i class="color-gray fa">Service Count</i> 2345</a></li>
+                            <li><a href="javascript:;"><i class="color-gray fa">Endpoint Count</i> 64245</a></li>
+                        </ul>
+                    </div>
+                    <!-- end Total Count Widget -->
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="panel panel-default">
+                            <div class="panel mini-box group-info">
+                                <span class="box-image">
+                                    <img src="images/img-group.png" alt="" />
+                                </span>
+                                <button type="button" class="btn btn-success btn-lg pull-right">Active</button>
+                                <div class="box-info">
+                                    <p>Terminal ID: <span>111</span></p>
+                                    <p>Name: <span>Terminal C</span></p>
+                                    <p>Model: <span>Content</span></p>
+                                    <p>Serial #: <span>Content</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Peripherals table -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Peripherals</strong></div>
+                            <table class="table table-striped table-hover" data-ng-controller="tablePeripheralCtrl">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Model</th>
+                                        <th>Serial #</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="store in currentPageStores" ng-click="navigate('/fleet/peripheral')">
+                                        <td>{{store.name}}</td>
+                                        <td>{{store.model}}</td>
+                                        <td>{{store.serial}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- end Terminals table -->
+                        <!-- Endpoint Services table -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Endpoint Services</strong></div>
+                            <table class="table table-striped table-hover" data-ng-controller="tableEndpointServiceCtrl">
+                                <thead>
+                                    <tr>
+                                        <th>UDID</th>
+                                        <th>Name</th>
+                                        <th>Service Type</th>
+                                        <th>Service Location</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="store in currentPageStores" ng-click="navigate('/fleet/endpoint-service')">
+                                        <td>{{store.udid}}</td>
+                                        <td>{{store.name}}</td>
+                                        <td>{{store.servicetype}}</td>
+                                        <td>{{store.servicelocation}}</td>
+                                        <td>{{store.desc}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- end Endpoint Services table -->
+                    </div>
+                    <div class="col-lg-4">
+                        <!-- Alert -->
+                        <section class="panel panel-default">
+                            <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Top 5 Alerts</strong></div>
+                            <div class="panel-body" data-ng-controller="AlertCtrl">
+                                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" ng-click="navigate('/fleet/terminal')">
+                                    <span class="alert-title">{{alert.title}}: {{alert.issue}}</span><br /><span class="alert-desc">{{alert.msg}}</span>
+                                </alert>
+                            </div>
+                        </section>
+                        <!-- end Alert -->
+                    </div>
+                    <div class="col-lg-8">
+                        <!-- Activity table -->
+                        <section class="panel panel-default table-dynamic" data-ng-controller="tableActivityCtrl">
+                            <div class="panel-heading">
+                                <div class="btn-group pull-right" dropdown is-open="status.isopen">
+                                    <span>{{filterValue}}</span>
+                                    <span class="glyphicon glyphicon-filter dropdown-toggle filter-activity"></span>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="javascript:;" ng-click="selectFilter('Today')">Today</a></li>
+                                        <li><a href="javascript:;" ng-click="selectFilter('Last 7 days')">Last 7 days</a></li>
+                                        <li><a href="javascript:;" ng-click="selectFilter('Last month')">Last month</a></li>
+                                        <li><a href="javascript:;" ng-click="selectFilter('Last year')">Last year</a></li>
+                                        <li><a href="javascript:;" ng-click="selectFilter('All')">All</a></li>
+                                    </ul>
+                                </div>
+                                <strong><span class="glyphicon glyphicon-th"></span> Activity</strong>
+                            </div>
+                            <table class="table table-responsive table-activity">
+                                <tbody>
+                                    <tr data-ng-repeat="store in currentPageStores">
+                                        <td><img ng-src="{{store.img}}" alt="" /></td>
+                                        <td><span class="activity-title">{{store.title}}</span><br /><span class="activity-desc">{{store.desc}}</span></td>
+                                        <td>
+                                            <button type="button" class="btn btn-{{typeClass(store.type)}} dropdown-toggle"> {{store.type}} <span class="caret"></span> </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <footer class="table-footer">
+                                <div class="row">
+                                    <div class="col-md-12 pagination-container">
+                                        <pagination boundary-links="true" total-items="filteredStores.length" ng-model="currentPage" ng-change="select(currentPage)" items-per-page="numPerPage" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+                                    </div>
+                                </div>
+                            </footer>
+                        </section>
+                        <!-- end Activity table -->
+                    </div>
+                    <div class="col-lg-4">
+                    </div>
+                </div>
+            </tab>
+            <tab heading="Alerts" id="tab-alerts">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <!-- Activity table -->
+                        <section class="panel panel-default table-dynamic" data-ng-controller="tableActivityCtrl">
+                            <div class="panel-heading">
+                                <div class="btn-group pull-right" dropdown is-open="status.isopen">
+                                    <span>{{filterValue}}</span>
+                                    <span class="glyphicon glyphicon-filter dropdown-toggle filter-activity"></span>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="javascript:;" ng-click="selectFilter('Today')">Today</a></li>
+                                        <li><a href="javascript:;" ng-click="selectFilter('Last 7 days')">Last 7 days</a></li>
+                                        <li><a href="javascript:;" ng-click="selectFilter('Last month')">Last month</a></li>
+                                        <li><a href="javascript:;" ng-click="selectFilter('Last year')">Last year</a></li>
+                                        <li><a href="javascript:;" ng-click="selectFilter('All')">All</a></li>
+                                    </ul>
+                                </div>
+                                <strong><span class="glyphicon glyphicon-th"></span> Activity</strong>
+                            </div>
+                            <table class="table table-responsive table-activity">
+                                <tbody>
+                                    <tr data-ng-repeat="store in currentPageStores">
+                                        <td><img ng-src="{{store.img}}" alt="" /></td>
+                                        <td><span class="activity-title">{{store.title}}</span><br /><span class="activity-desc">{{store.desc}}</span></td>
+                                        <td>
+                                            <button type="button" class="btn btn-{{typeClass(store.type)}} dropdown-toggle"> {{store.type}} <span class="caret"></span> </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <footer class="table-footer">
+                                <div class="row">
+                                    <div class="col-md-12 pagination-container">
+                                        <pagination boundary-links="true" total-items="filteredStores.length" ng-model="currentPage" ng-change="select(currentPage)" items-per-page="numPerPage" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+                                    </div>
+                                </div>
+                            </footer>
+                        </section>
+                        <!-- end Activity table -->
+                    </div>
+                    <div class="col-lg-4">
+                    </div>
+                </div>
+            </tab>
+            <li class="hamburger">
+                <a><i class="fa fa-bars"></i></a>
+            </li>
+            <li class="box-search"><input class="text-search" type="text" value="" placeholder="Search..." /><span class="glyphicon glyphicon-search btn-search"></span></li>
+        </tabset>
+    </div>
+</div>

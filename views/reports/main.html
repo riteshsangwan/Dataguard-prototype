@@ -1,0 +1,35 @@
+<div class="container" data-ng-controller="ReportsCtrl">
+    <div class="page main-custom">
+        <div class="ui-tab-custom">
+            <tabset class="ui-tab">
+                <tab heading="Reports">
+                    <div class="row">
+                        <div class="col col-md-6 col-sm-6 col-xs-12">
+                            <table class="table table-responsive table-stats-list">
+                                <tbody>
+                                    <tr data-ng-repeat="stat in stats">
+                                        <td>
+                                            <h4><strong>{{stat.name}}</strong></h4>
+                                            <p>{{stat.description}}</p>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn dropdown-toggle" 
+                                                data-ng-class="{'btn-success': stat.status==='Run', 'btn-dark': stat.status === 'Running'}">
+                                                {{stat.status}}
+                                                <span class="caret"></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </tab>
+                <li class="hamburger">
+                    <a><i class="fa fa-bars"></i></a>
+                </li>
+                <li class="box-search"><input class="text-search" type="text" value="" placeholder="Search..." /><span class="glyphicon glyphicon-search btn-search"></span></li>
+            </tabset>
+        </div>
+    </div>
+</div

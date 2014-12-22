@@ -1,0 +1,37 @@
+[
+    {
+        "peripheralId" : "asdsadsssd",
+        "name" : "peripheral 1",
+        "thumb" : "images/img-group.png",
+        "model" : "87TRY",
+        "serialNo" : "768763453454"
+    },
+    {
+        "peripheralId" : "fsdfsdfdsfdf",
+        "name" : "peripheral 111",
+        "thumb" : "images/img-group.png",
+        "model" : "72XRT",
+        "serialNo" : "34343242343434"
+    },
+    {
+        "peripheralId" : "sdofidjfiot",
+        "name" : "peripheral 34",
+        "thumb" : "images/img-group.png",
+        "model" : "9087ASD",
+        "serialNo" : "0953453457"
+    },
+    {
+        "peripheralId" : "fhigkjhgf",
+        "name" : "peripheral 76",
+        "thumb" : "images/img-group.png",
+        "model" : "67THGT43",
+        "serialNo" : "34874765475"
+    },
+    {
+        "peripheralId" : "ietyytryutr",
+        "name" : "peripheral asdsa",
+        "thumb" : "images/img-group.png",
+        "model" : "98HTGFX21",
+        "serialNo" : "0996776765745432"
+    }
+]

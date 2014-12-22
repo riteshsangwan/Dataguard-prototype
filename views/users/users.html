@@ -1,0 +1,132 @@
+<div class="container" data-ng-controller="UsersCtrl">
+    <div class="page main-custom">
+        <div class="ui-tab-custom">
+            <tabset class="ui-tab">
+                <!-- users tab -->
+                <tab heading="Users">
+                    <div class="row">
+                        <div class="col col col col-md-12 col-sm-12 col-xs-12">
+                            <table class="table table-responsive users-stats-table">
+                                <thead>
+                                    <tr>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Username</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Picture</th>
+                                        <th>Groups</th>
+                                        <th>Roles</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="user in users">
+                                        <td>{{user.firstName}}</td>
+                                        <td>{{user.lastName}}</td>
+                                        <td>{{user.username}}</td>
+                                        <td>{{user.email}}</td>
+                                        <td>{{user.phone}}</td>
+                                        <td>{{user.picture}}</td>
+                                        <!-- groups to which user belongs -->
+                                        <td class="groups">
+                                            <label data-ng-repeat="group in user.groups">
+                                            {{group}}<i class="glyphicon glyphicon-remove"></i>
+                                            </label>
+                                        </td>
+                                        <!-- roles assigned to user -->
+                                        <td class="roles">
+                                            <label data-ng-repeat="role in user.roles">
+                                            {{role}}<i class="glyphicon glyphicon-remove"></i>
+                                            </label>
+                                        </td>
+                                        <td>{{user.status}}</td>
+                                        <!-- edit button -->
+                                        <td class="edit"><i class="glyphicon glyphicon-pencil"></i></td>
+                                        <!-- button button -->
+                                        <td class="delete"><i class="glyphicon glyphicon-trash"></i></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </tab>
+                <!-- Groups tab -->
+                <tab heading="Groups">
+                    <div class="row">
+                        <div class="col col col-md-12 col-sm-12 col-xs-12">
+                            <table class="table table-responsive users-stats-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Users</th>
+                                        <th>Roles</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="group in groups">
+                                        <td>{{group.name}}</td>
+                                        <td>{{group.description}}</td>
+                                        <!-- users which belong to this group -->
+                                        <td class="users">
+                                            <label data-ng-repeat="user in group.users">
+                                            {{user}}<i class="glyphicon glyphicon-remove"></i>
+                                            </label>
+                                        </td>
+                                        <!-- roles to which this group belongs -->
+                                        <td class="roles">
+                                            <label data-ng-repeat="role in group.roles">
+                                            {{role}}<i class="glyphicon glyphicon-remove"></i>
+                                            </label>
+                                        </td>
+                                        <!-- edit button -->
+                                        <td class="edit"><i class="glyphicon glyphicon-pencil"></i></td>
+                                        <!-- button button -->
+                                        <td class="delete"><i class="glyphicon glyphicon-trash"></i></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </tab>
+                <!-- Roles tab -->
+                <tab heading="Roles">
+                    <div class="row">
+                        <div class="col col-md-12 col-sm-12 col-xs-12">
+                            <table class="table table-responsive users-stats-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Groups</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="role in roles">
+                                        <td>{{role.name}}</td>
+                                        <td>{{role.description}}</td>
+                                        <!-- users which belong to this group -->
+                                        <td class="groups">
+                                            <label data-ng-repeat="group in role.groups">
+                                            {{group}}<i class="glyphicon glyphicon-remove"></i>
+                                            </label>
+                                        </td>
+                                        <!-- edit button -->
+                                        <td class="edit"><i class="glyphicon glyphicon-pencil"></i></td>
+                                        <!-- button button -->
+                                        <td class="delete"><i class="glyphicon glyphicon-trash"></i></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </tab>
+                <li class="hamburger">
+                    <a><i class="fa fa-bars"></i></a>
+                </li>
+                <li class="box-search"><input class="text-search" type="text" value="" placeholder="Search..." /><span class="glyphicon glyphicon-search btn-search"></span></li>
+            </tabset>
+        </div>
+    </div>
+</div

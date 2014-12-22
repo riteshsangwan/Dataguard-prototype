@@ -1,0 +1,30 @@
+[
+    {
+        "udid" : "es1",
+        "name" : "endpointA",
+        "description" : "EP Description",
+        "serviceType" : "Payment Services",
+        "serviceLocation" : "https://api.dges.tempuri.org"
+    },
+    {
+        "udid" : "eserva",
+        "name" : "endpointA1",
+        "description" : "EP Description",
+        "serviceType" : "Identification",
+        "serviceLocation" : "https://es.dges.tempuri.org"
+    },
+    {
+        "udid" : "es1de",
+        "name" : "endpointA4",
+        "description" : "EP Description",
+        "serviceType" : "Age Verification",
+        "serviceLocation" : "https://api.dges.tempuri.org:82"
+    },
+    {
+        "udid" : "es1ac",
+        "name" : "endpointABD",
+        "description" : "EP Description",
+        "serviceType" : "Wire trx",
+        "serviceLocation" : "https://api.dges.tempuri.org:8081"
+    }
+]

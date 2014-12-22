@@ -1,0 +1,203 @@
+<div class="page page-dashboard main-custom" data-ng-controller="DashboardCtrl">
+    <div class="ui-tab-custom">
+        <tabset class="ui-tab">
+            <tab heading="Enterprise Group A Summary">
+                <div class="row">
+                    <!-- Total Count Widget -->
+                    <div class="col-md-12">
+                        <ul class="nav nav-boxed nav-justified">
+                            <li><a href="javascript:;"><i class="color-gray fa">Enterprise Group Count</i> 5</a></li>
+                            <li><a href="javascript:;"><i class="color-gray fa">Location Count</i> 114</a></li>
+                            <li><a href="javascript:;"><i class="color-gray fa">Terminal Count</i> 444</a></li>
+                            <li><a href="javascript:;"><i class="color-gray fa">Peripheral Count</i> 114</a></li>
+                            <li><a href="javascript:;"><i class="color-gray fa">Service Count</i> 2345</a></li>
+                            <li><a href="javascript:;"><i class="color-gray fa">Endpoint Count</i> 64245</a></li>
+                        </ul>
+                    </div>
+                    <!-- end Total Count Widget -->
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-8">
+                        <!-- Enterprise Sub Groups table -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Enterprise Sub Groups</strong></div>
+                            <div class="panel mini-box group-info">
+                                <span class="box-image">
+                                    <img src="images/img-group.png" alt="" />
+                                </span>
+                                <div class="box-info">
+                                    <p>FirstName LastName</p>
+                                    <p>Email</p>
+                                    <p>Phone</p>
+                                    <p>Description</p>
+                                </div>
+                            </div>
+                            <table class="table table-striped table-hover" data-ng-controller="tableEnterpriseGroupCtrl">
+                                <thead>
+                                    <tr>
+                                        <th>Group Name</th>
+                                        <th>Description</th>
+                                        <th>Field</th>
+                                        <th>Field</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="store in currentPageStores | filter:dashboardFilter" ng-click="navigate('/fleet/enterprise-group')">
+                                        <td>{{store.name}}</td>
+                                        <td>{{store.desc}}</td>
+                                        <td>{{store.field1}}</td>
+                                        <td>{{store.field2}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- end Enterprise Sub Groups table -->
+                    </div>
+                    <div class="col-lg-4">
+                        <!-- Alert -->
+                        <section class="panel panel-default">
+                            <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Top 5 Alerts</strong></div>
+                            <div class="panel-body" data-ng-controller="AlertCtrl">
+                                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" ng-click="navigate('/fleet/terminal')">
+                                    <span class="alert-title">{{alert.title}}: {{alert.issue}}</span><br /><span class="alert-desc">{{alert.msg}}</span>
+                                </alert>
+                            </div>
+                        </section>
+                        <!-- end Alert -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <!-- Activity table -->
+                        <section class="panel panel-default table-dynamic" data-ng-controller="tableActivityCtrl">
+                            <div class="panel-heading">
+                                <div class="btn-group pull-right" dropdown is-open="status.isopen">
+                                    <span>{{filterValue}}</span>
+                                    <span class="glyphicon glyphicon-filter dropdown-toggle filter-activity"></span>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="javascript:;" ng-click="selectFilter('Today')">Today</a></li>
+                                        <li><a href="javascript:;" ng-click="selectFilter('Last 7 days')">Last 7 days</a></li>
+                                        <li><a href="javascript:;" ng-click="selectFilter('Last month')">Last month</a></li>
+                                        <li><a href="javascript:;" ng-click="selectFilter('Last year')">Last year</a></li>
+                                        <li><a href="javascript:;" ng-click="selectFilter('All')">All</a></li>
+                                    </ul>
+                                </div>
+                                <strong><span class="glyphicon glyphicon-th"></span> Activity</strong>
+                            </div>
+                            <table class="table table-responsive table-activity">
+                                <tbody>
+                                    <tr data-ng-repeat="store in currentPageStores">
+                                        <td><img ng-src="{{store.img}}" alt="" /></td>
+                                        <td><span class="activity-title">{{store.title}}</span><br /><span class="activity-desc">{{store.desc}}</span></td>
+                                        <td>
+                                            <button type="button" class="btn btn-{{typeClass(store.type)}} dropdown-toggle"> {{store.type}} <span class="caret"></span> </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <footer class="table-footer">
+                                <div class="row">
+                                    <div class="col-md-12 pagination-container">
+                                        <pagination boundary-links="true" total-items="filteredStores.length" ng-model="currentPage" ng-change="select(currentPage)" items-per-page="numPerPage" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+                                    </div>
+                                </div>
+                            </footer>
+                        </section>
+                        <!-- end Activity table -->
+                    </div>
+                    <div class="col-lg-4">
+                        <!-- Activity Chart Sample -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Activity Chart Sample</strong></div>
+                            <div class="panel-body" data-ng-controller="flotChartCtrl">
+                                <div data-flot-chart
+                                     data-data="line1.data"
+                                     data-options="line1.options"
+                                     style="width: 100%; height: 300px;"></div>
+                            </div>
+                        </div>
+                        <!-- end Activity Chart Sample -->
+                        <!-- Issues Chart -->
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Issues</h3>
+                                    </div>
+                                    <div class="panel-body" data-ng-controller="flotChartCtrl">
+                                        <div data-flot-chart
+                                             data-data="barChart.data"
+                                             data-options="barChart.options"
+                                             style="width: 100%; height: 100px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="total-issues"><span class="data">+142</span><br /><span>FROM LAST YEAR</span></div>
+                            </div>
+                        </div>
+                        <!-- end Issues Chart -->
+                        <!-- Total Count -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="nav nav-boxed nav-justified">
+                                    <li><a href="javascript:;"><i class="color-gray fa">Transactions</i> 9,362.74</a></li>
+                                    <li><a href="javascript:;"><i class="color-gray fa">Secure Sessions</i> 6,734.89</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- end Total Count -->
+                    </div>
+                </div>
+            </tab>
+            <tab heading="Alerts" id="tab-alerts">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <!-- Activity table -->
+                        <section class="panel panel-default table-dynamic" data-ng-controller="tableActivityCtrl">
+                            <div class="panel-heading">
+                                <div class="btn-group pull-right" dropdown is-open="status.isopen">
+                                    <span>{{filterValue}}</span>
+                                    <span class="glyphicon glyphicon-filter dropdown-toggle filter-activity"></span>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="javascript:;" ng-click="selectFilter('Today')">Today</a></li>
+                                        <li><a href="javascript:;" ng-click="selectFilter('Last 7 days')">Last 7 days</a></li>
+                                        <li><a href="javascript:;" ng-click="selectFilter('Last month')">Last month</a></li>
+                                        <li><a href="javascript:;" ng-click="selectFilter('Last year')">Last year</a></li>
+                                        <li><a href="javascript:;" ng-click="selectFilter('All')">All</a></li>
+                                    </ul>
+                                </div>
+                                <strong><span class="glyphicon glyphicon-th"></span> Activity</strong>
+                            </div>
+                            <table class="table table-responsive table-activity">
+                                <tbody>
+                                    <tr data-ng-repeat="store in currentPageStores">
+                                        <td><img ng-src="{{store.img}}" alt="" /></td>
+                                        <td><span class="activity-title">{{store.title}}</span><br /><span class="activity-desc">{{store.desc}}</span></td>
+                                        <td>
+                                            <button type="button" class="btn btn-{{typeClass(store.type)}} dropdown-toggle"> {{store.type}} <span class="caret"></span> </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <footer class="table-footer">
+                                <div class="row">
+                                    <div class="col-md-12 pagination-container">
+                                        <pagination boundary-links="true" total-items="filteredStores.length" ng-model="currentPage" ng-change="select(currentPage)" items-per-page="numPerPage" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+                                    </div>
+                                </div>
+                            </footer>
+                        </section>
+                        <!-- end Activity table -->
+                    </div>
+                    <div class="col-lg-4">
+                    </div>
+                </div>
+            </tab>
+            <li class="hamburger">
+                <a><i class="fa fa-bars"></i></a>
+            </li>
+        </tabset>
+    </div>
+</div>

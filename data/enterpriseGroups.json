@@ -1,0 +1,31 @@
+[
+    {
+        "name" : "Group Main",
+        "description" : "This is longer content",
+        "subgroups" : [
+            "EG2",
+            "group2",
+            "EGroup 3"
+        ]
+    },
+    {
+        "name" : "Group A",
+        "description" : "This is longer content",
+        "subgroups" : [
+            "EGroup 3"
+        ]
+    },
+    {
+        "name" : "Group D",
+        "description" : "This is longer content",
+        "subgroups" : [
+        ]
+    },
+    {
+        "name" : "Group East",
+        "description" : "This is longer content",
+        "subgroups" : [
+            "Group DCD"
+        ]
+    }
+]

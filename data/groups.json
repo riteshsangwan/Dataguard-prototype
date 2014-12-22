@@ -1,0 +1,43 @@
+[
+    {
+        "name" : "Admins",
+        "description" : "Content",
+        "users" : [
+            "peter_a",
+            "joebrown",
+            "harrybel12"
+        ],
+        "roles" : [
+            "Administrator"
+        ]
+    },
+    {
+        "name" : "Field Agents",
+        "description" : "Content",
+        "users" : [
+            "abcv34",
+            "gadefhdf",
+            "simopordy"
+        ],
+        "roles" : [
+            "Reader",
+            "Operator"
+        ]
+    },
+    {
+        "name" : "Content",
+        "description" : "Content",
+        "users" : [
+        ],
+        "roles" : [
+        ]
+    },
+    {
+        "name" : "Content",
+        "description" : "Content",
+        "users" : [
+        ],
+        "roles" : [
+        ]
+    }
+]

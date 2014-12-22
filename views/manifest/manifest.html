@@ -1,0 +1,262 @@
+<div class="container" data-ng-controller="ManifestCtrl">
+    <div class="page main-custom manifest-page">
+        <div class="ui-tab-custom">
+            <tabset class="ui-tab">
+                <tab heading="Manifest">
+                    <div class="row">
+                        <!-- nested lists data -->
+                        <div class="col col-md-12 col-sm-12 col-xs-12">
+                            <div ui-tree>
+                                <ol ui-tree-nodes="" ng-model="manifests">
+                                    <!-- manifest list subheader -->
+                                    <div class="row">
+                                        <div class="col col-md-10 col-sm-10 col-xs-10">
+                                            <h2>Manifests</h2>
+                                        </div>
+                                        <div class="col col-md-2 col-sm-2 col-xs-2">
+                                            <h2><i class="glyphicon glyphicon-filter pull-right"></i></h2>
+                                        </div>
+                                    </div>
+                                    <li data-ng-repeat="manifest in manifests" ui-tree-node>
+                                        <div class="row custom-table-header">
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>Associated Terminal ID</p>
+                                            </div>
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>Status</p>
+                                            </div>
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>PID</p>
+                                            </div>
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>Manifest ID</p>
+                                            </div>
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>Log Size</p>
+                                            </div>
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>Log Level</p>
+                                            </div>
+                                        </div>
+                                        <div class="row cutom-table-content">
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>{{manifest.terminal}}</p>
+                                            </div>
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>{{manifest.status}}</p>
+                                            </div>
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>{{manifest.pid}}</p>
+                                            </div>
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>{{manifest.manifestId}}</p>
+                                            </div>
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>{{manifest.logSize}}</p>
+                                            </div>
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>{{manifest.logLevel}}</p>
+                                            </div>
+                                        </div>
+                                        <ol ui-tree-nodes="" ng-model="manifest.endpoints">
+                                            <!-- manifest endpoint list subheader -->
+                                            <div class="row">
+                                                <div class="col col-md-10 col-sm-10 col-xs-10">
+                                                    <h4>Manifests Endpoints</h4>
+                                                </div>
+                                                <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                    <h4><i class="glyphicon glyphicon-plus-sign pull-right"></i></h4>
+                                                </div>
+                                            </div>
+                                            <li data-ng-repeat="endpoint in manifest.endpoints" ui-tree-node>
+                                                <div class="row custom-table-header">
+                                                    <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                        <label>Endpoint UDID</label>
+                                                    </div>
+                                                    <div class="col col-md-10 col-sm-10 col-xs-10">
+                                                        <label>Permissions</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row custom-table-content">
+                                                    <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                        <label>{{endpoint.udid}}</label>
+                                                    </div>
+                                                    <div class="col col-md-8 col-sm-8 col-xs-8">
+                                                        <label>{{endpoint.permissions}}</label>
+                                                    </div>
+                                                    <div class="col col-md-1 col-sm-1 col-xs-1 edit">
+                                                        <i class="glyphicon glyphicon-pencil pull-right"></i>
+                                                    </div>
+                                                    <div class="col col-md-1 col-sm-1 col-xs-1 delete">
+                                                        <i class="glyphicon glyphicon-trash pull-right"></i>
+                                                    </div>
+                                                </div>
+                                                <ol ui-tree-nodes="" ng-model="endpoint.endpointPolicies">
+                                                    <div class="row">
+                                                        <div class="col col-md-10 col-sm-10 col-xs-10">
+                                                            <h4>Manifests Policies</h4>
+                                                        </div>
+                                                        <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                            <h4><i class="glyphicon glyphicon-plus-sign pull-right"></i></h4>
+                                                        </div>
+                                                    </div>
+                                                    <li data-ng-repeat="policy in endpoint.endpointPolicies" ui-tree-node>
+                                                        <div class="row custom-table-header">
+                                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                                <p>Policy Name</p>
+                                                            </div>
+                                                            <div class="col col-md-10 col-sm-10 col-xs-10">
+                                                                <p>Value</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row custom-table-content">
+                                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                                <p>{{policy.policyName}}</p>
+                                                            </div>
+                                                            <div class="col col-md-10 col-sm-10 col-xs-10">
+                                                                <p>{{policy.value}}</p>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ol>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </tab>
+                <tab heading="Manifest Template">
+                    <div class="row">
+                        <!-- nested lists data -->
+                        <div class="col col-md-12 col-sm-12 col-xs-12">
+                            <div ui-tree>
+                                <ol ui-tree-nodes="" ng-model="manifests">
+                                    <!-- manifest list subheader -->
+                                    <div class="row">
+                                        <div class="col col-md-10 col-sm-10 col-xs-10">
+                                            <h2>Manifests</h2>
+                                        </div>
+                                        <div class="col col-md-2 col-sm-2 col-xs-2">
+                                            <h2><i class="glyphicon glyphicon-filter pull-right"></i></h2>
+                                        </div>
+                                    </div>
+                                    <li data-ng-repeat="manifest in manifests" ui-tree-node>
+                                        <div class="row custom-table-header">
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>Associated Terminal ID</p>
+                                            </div>
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>Status</p>
+                                            </div>
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>PID</p>
+                                            </div>
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>Manifest ID</p>
+                                            </div>
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>Log Size</p>
+                                            </div>
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>Log Level</p>
+                                            </div>
+                                        </div>
+                                        <div class="row cutom-table-content">
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>{{manifest.terminal}}</p>
+                                            </div>
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>{{manifest.status}}</p>
+                                            </div>
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>{{manifest.pid}}</p>
+                                            </div>
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>{{manifest.manifestId}}</p>
+                                            </div>
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>{{manifest.logSize}}</p>
+                                            </div>
+                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                <p>{{manifest.logLevel}}</p>
+                                            </div>
+                                        </div>
+                                        <ol ui-tree-nodes="" ng-model="manifest.endpoints">
+                                            <!-- manifest endpoint list subheader -->
+                                            <div class="row">
+                                                <div class="col col-md-10 col-sm-10 col-xs-10">
+                                                    <h4>Manifests Endpoints</h4>
+                                                </div>
+                                                <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                    <h4><i class="glyphicon glyphicon-plus-sign pull-right"></i></h4>
+                                                </div>
+                                            </div>
+                                            <li data-ng-repeat="endpoint in manifest.endpoints" ui-tree-node>
+                                                <div class="row custom-table-header">
+                                                    <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                        <label>Endpoint UDID</label>
+                                                    </div>
+                                                    <div class="col col-md-10 col-sm-10 col-xs-10">
+                                                        <label>Permissions</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row custom-table-content">
+                                                    <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                        <label>{{endpoint.udid}}</label>
+                                                    </div>
+                                                    <div class="col col-md-8 col-sm-8 col-xs-8">
+                                                        <label>{{endpoint.permissions}}</label>
+                                                    </div>
+                                                    <div class="col col-md-1 col-sm-1 col-xs-1 edit">
+                                                        <i class="glyphicon glyphicon-pencil pull-right"></i>
+                                                    </div>
+                                                    <div class="col col-md-1 col-sm-1 col-xs-1 delete">
+                                                        <i class="glyphicon glyphicon-trash pull-right"></i>
+                                                    </div>
+                                                </div>
+                                                <ol ui-tree-nodes="" ng-model="endpoint.endpointPolicies">
+                                                    <div class="row">
+                                                        <div class="col col-md-10 col-sm-10 col-xs-10">
+                                                            <h4>Manifests Policies</h4>
+                                                        </div>
+                                                        <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                            <h4><i class="glyphicon glyphicon-plus-sign pull-right"></i></h4>
+                                                        </div>
+                                                    </div>
+                                                    <li data-ng-repeat="policy in endpoint.endpointPolicies" ui-tree-node>
+                                                        <div class="row custom-table-header">
+                                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                                <p>Policy Name</p>
+                                                            </div>
+                                                            <div class="col col-md-10 col-sm-10 col-xs-10">
+                                                                <p>Value</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row custom-table-content">
+                                                            <div class="col col-md-2 col-sm-2 col-xs-2">
+                                                                <p>{{policy.policyName}}</p>
+                                                            </div>
+                                                            <div class="col col-md-10 col-sm-10 col-xs-10">
+                                                                <p>{{policy.value}}</p>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ol>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </tab>
+                <li class="hamburger">
+                    <a><i class="fa fa-bars"></i></a>
+                </li>
+                <li class="box-search"><input class="text-search" type="text" value="" placeholder="Search..." /><span class="glyphicon glyphicon-search btn-search"></span></li>
+            </tabset>
+        </div>
+    </div>
+</div>

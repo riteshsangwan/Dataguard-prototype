@@ -1,0 +1,351 @@
+<div class="container" data-ng-controller="InventoryCtrl">
+    <div class="page page-inventory main-custom">
+        <div class="ui-tab-custom">
+            <tabset class="ui-tab">
+                <!-- Enterprise groups tab -->
+                <tab heading="Enterprise Groups">
+                    <div class="row">
+                        <div class="col col-md-12 col-sm-12 col-xs-12">
+                            <!-- Tab header -->
+                            <div class="row tab-subheader">
+                                <div class="col col-md-10 col-sm-10 col-xs-10">
+                                    <span>
+                                        <h2>Enterprise Groups</h2>
+                                        <i class="glyphicon glyphicon-filter"></i>
+                                    </span>
+                                </div>
+                                <div class="col col-md-2 col-sm-2 col-xs-2">
+                                    <h2><i class="glyphicon glyphicon-plus-sign pull-right"></i></h2>
+                                </div>
+                            </div>
+                            <!-- table data -->
+                            <div class="row">
+                                <div class="col col-md-12 col-sm-12 col-xs-12">
+                                    <table class="table table-responsive inventory-data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                                <th>Subgroup(s)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr data-ng-repeat="enterpriseGroup in enterpriseGroups">
+                                                <td>{{enterpriseGroup.name}}</td>
+                                                <td>{{enterpriseGroup.description}}</td>
+                                                <!-- subgroups -->
+                                                <td class="groups">
+                                                    <label data-ng-repeat="group in enterpriseGroup.subgroups">
+                                                    {{group}}<i class="glyphicon glyphicon-remove"></i>
+                                                    </label>
+                                                </td>
+                                                <!-- edit button -->
+                                                <td class="edit"><i class="glyphicon glyphicon-pencil"></i></td>
+                                                <!-- button button -->
+                                                <td class="delete"><i class="glyphicon glyphicon-trash"></i></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- pagination -->
+                            <div class="row">
+                                <div class="col col-md-12 col-sm-12 col-xs-12">
+                                    <!-- align pagination on right side. Add pull-right class -->
+                                    <pagination class="pagination-sm pull-right" boundary-links="true" 
+                                    total-items="totalItems.enterpriseGroup" ng-model="pageIndexes.enterpriseGroup" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" items-per-page="5">
+                                    </pagination>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </tab>
+                <!-- Locations tab -->
+                <tab heading="Locations">
+                    <div class="row">
+                        <div class="col col-md-12 col-sm-12 col-xs-12">
+                            <!-- Tab header -->
+                            <div class="row tab-subheader">
+                                <div class="col col-md-10 col-sm-10 col-xs-10">
+                                    <span>
+                                        <h2>Locations</h2>
+                                        <i class="glyphicon glyphicon-filter"></i>
+                                    </span>
+                                </div>
+                                <div class="col col-md-2 col-sm-2 col-xs-2">
+                                    <h2><i class="glyphicon glyphicon-plus-sign pull-right"></i></h2>
+                                </div>
+                            </div>
+                            <!-- table data -->
+                            <div class="row">
+                                <div class="col col-md-12 col-sm-12 col-xs-12">
+                                    <table class="table table-responsive inventory-data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Address</th>
+                                                <th>Geolocation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr data-ng-repeat="location in locations">
+                                                <td>{{location.name}}</td>
+                                                <td>{{location.address}}</td>
+                                                <td>{{location.geoLocation}}</td>
+                                                <!-- location icon -->
+                                                <td class="location"><i class="glyphicon glyphicon-map-marker"></i></td>
+                                                <!-- edit button -->
+                                                <td class="edit"><i class="glyphicon glyphicon-pencil"></i></td>
+                                                <!-- button button -->
+                                                <td class="delete"><i class="glyphicon glyphicon-trash"></i></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- pagination -->
+                            <div class="row">
+                                <div class="col col-md-12 col-sm-12 col-xs-12">
+                                    <!-- align pagination on right side. Add pull-right class -->
+                                    <pagination class="pagination-sm pull-right" boundary-links="true" 
+                                    total-items="totalItems.location" ng-model="pageIndexes.location" items-per-page="5" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+                                    </pagination>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </tab>
+                <!-- Endpoint services tab -->
+                <tab heading="Endpoint Services">
+                    <div class="row">
+                        <div class="col col-md-12 col-sm-12 col-xs-12">
+                            <!-- Tab header -->
+                            <div class="row tab-subheader">
+                                <div class="col col-md-10 col-sm-10 col-xs-10">
+                                    <span>
+                                        <h2>Endpoint Services</h2>
+                                        <i class="glyphicon glyphicon-filter"></i>
+                                    </span>
+                                </div>
+                                <div class="col col-md-2 col-sm-2 col-xs-2">
+                                    <h2><i class="glyphicon glyphicon-plus-sign pull-right"></i></h2>
+                                </div>
+                            </div>
+                            <!-- table data -->
+                            <div class="row">
+                                <div class="col col-md-12 col-sm-12 col-xs-12">
+                                    <table class="table table-responsive inventory-data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>UDID</th>
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                                <th>Service Type</th>
+                                                <th>Service Location</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr data-ng-repeat="service in endpointServices">
+                                                <td>{{service.udid}}</td>
+                                                <td>{{service.name}}</td>
+                                                <td>{{service.description}}</td>
+                                                <td>{{service.serviceType}}</td>
+                                                <td>{{service.serviceLocation}}</td>
+                                                <td class="edit"><i class="glyphicon glyphicon-pencil"></i></td>
+                                                <!-- button button -->
+                                                <td class="delete"><i class="glyphicon glyphicon-trash"></i></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- pagination -->
+                            <div class="row">
+                                <div class="col col-md-12 col-sm-12 col-xs-12">
+                                    <!-- align pagination on right side. Add pull-right class -->
+                                    <pagination class="pagination-sm pull-right" boundary-links="true" 
+                                    total-items="totalItems.endpointService" ng-model="pageIndexes.endpointService" items-per-page="5" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+                                    </pagination>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </tab>
+                <!-- Terminals tab -->
+                <tab heading="Terminals">
+                    <div class="row">
+                        <div class="col col-md-12 col-sm-12 col-xs-12">
+                            <!-- Tab header -->
+                            <div class="row tab-subheader">
+                                <div class="col col-md-10 col-sm-10 col-xs-10">
+                                    <span>
+                                        <h2>Terminals</h2>
+                                        <i class="glyphicon glyphicon-filter"></i>
+                                    </span>
+                                </div>
+                                <div class="col col-md-2 col-sm-2 col-xs-2">
+                                    <h2><i class="glyphicon glyphicon-plus-sign pull-right"></i></h2>
+                                </div>
+                            </div>
+                            <!-- table data -->
+                            <div class="row">
+                                <div class="col col-md-12 col-sm-12 col-xs-12">
+                                    <table class="table table-responsive inventory-data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Terminal ID</th>
+                                                <th>Name</th>
+                                                <th>Picture/Image</th>
+                                                <th>Model</th>
+                                                <th>Serial #</th>
+                                                <th>Manifest ID</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr data-ng-repeat="terminal in terminals">
+                                                <td>{{terminal.terminalId}}</td>
+                                                <td>{{terminal.name}}</td>
+                                                <td class="terminal-thumbnail">
+                                                    <img class="img-responsive" data-ng-src="{{terminal.thumb}}">
+                                                </td>
+                                                <td>{{terminal.model}}</td>
+                                                <td>{{terminal.serialNo}}</td>
+                                                <td>{{terminal.manifestId}}</td>
+                                                <td class="edit"><i class="glyphicon glyphicon-pencil"></i></td>
+                                                <!-- button button -->
+                                                <td class="delete"><i class="glyphicon glyphicon-trash"></i></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- pagination -->
+                            <div class="row">
+                                <div class="col col-md-12 col-sm-12 col-xs-12">
+                                    <!-- align pagination on right side. Add pull-right class -->
+                                    <pagination class="pagination-sm pull-right" boundary-links="true" 
+                                    total-items="totalItems.terminal" ng-model="pageIndexes.terminal" items-per-page="5" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+                                    </pagination>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </tab>
+                <!-- Peripherals tab -->
+                <tab heading="Peripherals">
+                    <div class="row">
+                        <div class="col col-md-12 col-sm-12 col-xs-12">
+                            <!-- Tab header -->
+                            <div class="row tab-subheader">
+                                <div class="col col-md-10 col-sm-10 col-xs-10">
+                                    <span>
+                                        <h2>Peripherals</h2>
+                                        <i class="glyphicon glyphicon-filter"></i>
+                                    </span>
+                                </div>
+                                <div class="col col-md-2 col-sm-2 col-xs-2">
+                                    <h2><i class="glyphicon glyphicon-plus-sign pull-right"></i></h2>
+                                </div>
+                            </div>
+                            <!-- table data -->
+                            <div class="row">
+                                <div class="col col-md-12 col-sm-12 col-xs-12">
+                                    <table class="table table-responsive inventory-data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Peripheral ID</th>
+                                                <th>Name</th>
+                                                <th>Picture/Image</th>
+                                                <th>Model</th>
+                                                <th>Serial #</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr data-ng-repeat="peripheral in peripherals">
+                                                <td>{{peripheral.peripheralId}}</td>
+                                                <td>{{peripheral.name}}</td>
+                                                <td class="terminal-thumbnail">
+                                                    <img class="img-responsive" data-ng-src="{{peripheral.thumb}}">
+                                                </td>
+                                                <td>{{peripheral.model}}</td>
+                                                <td>{{peripheral.serialNo}}</td>
+                                                <td class="edit"><i class="glyphicon glyphicon-pencil"></i></td>
+                                                <!-- button button -->
+                                                <td class="delete"><i class="glyphicon glyphicon-trash"></i></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- pagination -->
+                            <div class="row">
+                                <div class="col col-md-12 col-sm-12 col-xs-12">
+                                    <!-- align pagination on right side. Add pull-right class -->
+                                    <pagination class="pagination-sm pull-right" boundary-links="true" 
+                                    total-items="totalItems.terminal" ng-model="pageIndexes.terminal" items-per-page="5" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+                                    </pagination>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </tab>
+                <!-- Endpoint services tab -->
+                <tab heading="Endpoint Services">
+                    <div class="row">
+                        <div class="col col-md-12 col-sm-12 col-xs-12">
+                            <!-- Tab header -->
+                            <div class="row tab-subheader">
+                                <div class="col col-md-10 col-sm-10 col-xs-10">
+                                    <span>
+                                        <h2>Endpoints</h2>
+                                        <i class="glyphicon glyphicon-filter"></i>
+                                    </span>
+                                </div>
+                                <div class="col col-md-2 col-sm-2 col-xs-2">
+                                    <h2><i class="glyphicon glyphicon-plus-sign pull-right"></i></h2>
+                                </div>
+                            </div>
+                            <!-- table data -->
+                            <div class="row">
+                                <div class="col col-md-12 col-sm-12 col-xs-12">
+                                    <table class="table table-responsive inventory-data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>UDID</th>
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                                <th>Service Type</th>
+                                                <th>Service Location</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr data-ng-repeat="endpoint in endpoints">
+                                                <td>{{endpoint.udid}}</td>
+                                                <td>{{endpoint.name}}</td>
+                                                <td>{{endpoint.description}}</td>
+                                                <td>{{endpoint.serviceType}}</td>
+                                                <td>{{endpoint.serviceLocation}}</td>
+                                                <td class="edit"><i class="glyphicon glyphicon-pencil"></i></td>
+                                                <!-- button button -->
+                                                <td class="delete"><i class="glyphicon glyphicon-trash"></i></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- pagination -->
+                            <div class="row">
+                                <div class="col col-md-12 col-sm-12 col-xs-12">
+                                    <!-- align pagination on right side. Add pull-right class -->
+                                    <pagination class="pagination-sm pull-right" boundary-links="true" 
+                                    total-items="totalItems.endpointService" ng-model="pageIndexes.endpointService" items-per-page="5" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+                                    </pagination>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </tab>
+            </tabset>
+        </div>
+    </div>
+</div

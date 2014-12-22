@@ -1,0 +1,29 @@
+[
+    {
+        "name" : "Administrator",
+        "description" : "Content",
+        "groups" : [
+            "Admins"
+        ]
+    },
+    {
+        "name" : "Operator",
+        "description" : "Content",
+        "groups" : [
+            "Field Agents"
+        ]
+    },
+    {
+        "name" : "Reader",
+        "description" : "Content",
+        "groups" : [
+            "Field Agents"
+        ]
+    },
+    {
+        "name" : "Support Monitor",
+        "description" : "Content",
+        "groups" : [
+        ]
+    }
+]

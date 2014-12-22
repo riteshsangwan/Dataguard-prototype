@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Manifest",
+        "description": "Manifest description",
+        "status": "Run"
+    },
+    {
+        "name": "Top Issues",
+        "description": "Top Issues description",
+        "status": "Run"
+    },
+    {
+        "name": "Recent Issues",
+        "description": "Recent Issues description",
+        "status": "Run"
+    },
+    {
+        "name": "Device Status",
+        "description": "Device Status description",
+        "status": "Run"
+    },
+    {
+        "name": "Tech Assignments",
+        "description": "Tech Assignments description",
+        "status": "Running"
+    }
+]

@@ -1,0 +1,272 @@
+[
+    {
+        "terminal" : "Terminal A",
+        "status" : "ACTIVE",
+        "pid" : "234232343",
+        "manifestId" : "sdfdsf",
+        "logSize" : "000045",
+        "logLevel" : "003F000",
+        "endpoints" : [
+            {
+                "udid" : "endpoint abc",
+                "permissions" : "EndpointD:EndpointA:EndpointServiceBB",
+                "endpointPolicies" : [
+                    {
+                        "policyName" : "Pol A",
+                        "value" : "DECRYPT:DECRYPTA:B:C"
+                    },
+                    {
+                        "policyName" : "Pol B",
+                        "value" : "DECRYPT:DECRYPTA:B:C"
+                    },
+                    {
+                        "policyName" : "Pol C",
+                        "value" : "DECRYPT:DECRYPT:A"
+                    },
+                    {
+                        "policyName" : "Pol D",
+                        "value" : "DECRYPT:DECRYPT:ABC"
+                    }
+                ]
+            },
+            {
+                "udid" : "endpoint 2",
+                "permissions" : "EndpointD:EndpointA:EndpointServiceBB",
+                "endpointPolicies" : [
+                    {
+                        "policyName" : "Pol A",
+                        "value" : "DECRYPT:DECRYPTA:B:C"
+                    },
+                    {
+                        "policyName" : "Pol B",
+                        "value" : "DECRYPT:DECRYPTA:B:C"
+                    },
+                    {
+                        "policyName" : "Pol C",
+                        "value" : "DECRYPT:DECRYPT:A"
+                    },
+                    {
+                        "policyName" : "Pol D",
+                        "value" : "DECRYPT:DECRYPT:ABC"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "terminal" : "Terminal B",
+        "status" : "ACTIVE",
+        "pid" : "768678",
+        "manifestId" : "asdere",
+        "logSize" : "000045",
+        "logLevel" : "003F000",
+        "endpoints" : [
+            {
+                "udid" : "endpoint abc",
+                "permissions" : "EndpointD:EndpointA:EndpointServiceBB",
+                "endpointPolicies" : [
+                    {
+                        "policyName" : "Pol A",
+                        "value" : "DECRYPT:DECRYPTA:B:C"
+                    },
+                    {
+                        "policyName" : "Pol B",
+                        "value" : "DECRYPT:DECRYPTA:B:C"
+                    },
+                    {
+                        "policyName" : "Pol C",
+                        "value" : "DECRYPT:DECRYPT:A"
+                    },
+                    {
+                        "policyName" : "Pol D",
+                        "value" : "DECRYPT:DECRYPT:ABC"
+                    }
+                ]
+            },
+            {
+                "udid" : "endpoint 2",
+                "permissions" : "EndpointD:EndpointA:EndpointServiceBB",
+                "endpointPolicies" : [
+                    {
+                        "policyName" : "Pol A",
+                        "value" : "DECRYPT:DECRYPTA:B:C"
+                    },
+                    {
+                        "policyName" : "Pol B",
+                        "value" : "DECRYPT:DECRYPTA:B:C"
+                    },
+                    {
+                        "policyName" : "Pol C",
+                        "value" : "DECRYPT:DECRYPT:A"
+                    },
+                    {
+                        "policyName" : "Pol D",
+                        "value" : "DECRYPT:DECRYPT:ABC"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "terminal" : "Terminal ABCD",
+        "status" : "ACTIVE",
+        "pid" : "230990",
+        "manifestId" : "ertethuyu",
+        "logSize" : "000045",
+        "logLevel" : "003F000",
+        "endpoints" : [
+            {
+                "udid" : "endpoint abc",
+                "permissions" : "EndpointD:EndpointA:EndpointServiceBB",
+                "endpointPolicies" : [
+                    {
+                        "policyName" : "Pol A",
+                        "value" : "DECRYPT:DECRYPTA:B:C"
+                    },
+                    {
+                        "policyName" : "Pol B",
+                        "value" : "DECRYPT:DECRYPTA:B:C"
+                    },
+                    {
+                        "policyName" : "Pol C",
+                        "value" : "DECRYPT:DECRYPT:A"
+                    },
+                    {
+                        "policyName" : "Pol D",
+                        "value" : "DECRYPT:DECRYPT:ABC"
+                    }
+                ]
+            },
+            {
+                "udid" : "endpoint 2",
+                "permissions" : "EndpointD:EndpointA:EndpointServiceBB",
+                "endpointPolicies" : [
+                    {
+                        "policyName" : "Pol A",
+                        "value" : "DECRYPT:DECRYPTA:B:C"
+                    },
+                    {
+                        "policyName" : "Pol B",
+                        "value" : "DECRYPT:DECRYPTA:B:C"
+                    },
+                    {
+                        "policyName" : "Pol C",
+                        "value" : "DECRYPT:DECRYPT:A"
+                    },
+                    {
+                        "policyName" : "Pol D",
+                        "value" : "DECRYPT:DECRYPT:ABC"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "terminal" : "asdsadsssd",
+        "status" : "ACTIVE",
+        "pid" : "123657879",
+        "manifestId" : "cvxbvcbghg",
+        "logSize" : "000045",
+        "logLevel" : "003F000",
+        "endpoints" : [
+            {
+                "udid" : "endpoint abc",
+                "permissions" : "EndpointD:EndpointA:EndpointServiceBB",
+                "endpointPolicies" : [
+                    {
+                        "policyName" : "Pol A",
+                        "value" : "DECRYPT:DECRYPTA:B:C"
+                    },
+                    {
+                        "policyName" : "Pol B",
+                        "value" : "DECRYPT:DECRYPTA:B:C"
+                    },
+                    {
+                        "policyName" : "Pol C",
+                        "value" : "DECRYPT:DECRYPT:A"
+                    },
+                    {
+                        "policyName" : "Pol D",
+                        "value" : "DECRYPT:DECRYPT:ABC"
+                    }
+                ]
+            },
+            {
+                "udid" : "endpoint 2",
+                "permissions" : "EndpointD:EndpointA:EndpointServiceBB",
+                "endpointPolicies" : [
+                    {
+                        "policyName" : "Pol A",
+                        "value" : "DECRYPT:DECRYPTA:B:C"
+                    },
+                    {
+                        "policyName" : "Pol B",
+                        "value" : "DECRYPT:DECRYPTA:B:C"
+                    },
+                    {
+                        "policyName" : "Pol C",
+                        "value" : "DECRYPT:DECRYPT:A"
+                    },
+                    {
+                        "policyName" : "Pol D",
+                        "value" : "DECRYPT:DECRYPT:ABC"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "terminal" : "asdsadsssd",
+        "status" : "ACTIVE",
+        "pid" : "9775432432",
+        "manifestId" : "werewyuoiui",
+        "logSize" : "000045",
+        "logLevel" : "003F000",
+        "endpoints" : [
+            {
+                "udid" : "endpoint abc",
+                "permissions" : "EndpointD:EndpointA:EndpointServiceBB",
+                "endpointPolicies" : [
+                    {
+                        "policyName" : "Pol A",
+                        "value" : "DECRYPT:DECRYPTA:B:C"
+                    },
+                    {
+                        "policyName" : "Pol B",
+                        "value" : "DECRYPT:DECRYPTA:B:C"
+                    },
+                    {
+                        "policyName" : "Pol C",
+                        "value" : "DECRYPT:DECRYPT:A"
+                    },
+                    {
+                        "policyName" : "Pol D",
+                        "value" : "DECRYPT:DECRYPT:ABC"
+                    }
+                ]
+            },
+            {
+                "udid" : "endpoint 2",
+                "permissions" : "EndpointD:EndpointA:EndpointServiceBB",
+                "endpointPolicies" : [
+                    {
+                        "policyName" : "Pol A",
+                        "value" : "DECRYPT:DECRYPTA:B:C"
+                    },
+                    {
+                        "policyName" : "Pol B",
+                        "value" : "DECRYPT:DECRYPTA:B:C"
+                    },
+                    {
+                        "policyName" : "Pol C",
+                        "value" : "DECRYPT:DECRYPT:A"
+                    },
+                    {
+                        "policyName" : "Pol D",
+                        "value" : "DECRYPT:DECRYPT:ABC"
+                    }
+                ]
+            }
+        ]
+    }
+]
